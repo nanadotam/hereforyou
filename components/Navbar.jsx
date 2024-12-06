@@ -11,9 +11,7 @@ export default function Navbar() {
           </Link>
           <div className="flex gap-6 items-center">
             <CategoryDropdown />
-            <Link href="/questions/1" className="font-playfair italic text-black hover:text-black/80">
-              Questions
-            </Link>
+          
           </div>
         </div>
       </div>
