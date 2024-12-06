@@ -3,7 +3,6 @@
 import { categoryQuestions } from '@/app/data/categoryQuestions';
 import PageTransition from '@/components/PageTransition';
 import { useParams, useRouter } from 'next/navigation';
-import { motion } from 'framer-motion';
 import { useSwipeable } from 'react-swipeable';
 import { useToast } from "@/hooks/use-toast";
 import Link from 'next/link';
@@ -12,7 +11,28 @@ export default function CategoryQuestionPage() {
   const params = useParams();
   const router = useRouter();
   const { toast } = useToast();
-  
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      if (nextId) {
+        router.push(`/categories/${params.category}/questions/${nextId}`);
+        toast({
+          title: "Next Question",
+          description: "Swipe right to go back",
+        });
+      }
+    },
+    onSwipedRight: () => {
+      if (prevId) {
+        router.push(`/categories/${params.category}/questions/${prevId}`);
+        toast({
+          title: "Previous Question",
+          description: "Swipe left to continue",
+        });
+      }
+    },
+  });
+
   const category = categoryQuestions[params.category];
   if (!category) {
     router.push('/');
@@ -29,23 +49,6 @@ export default function CategoryQuestionPage() {
   const currentIndex = questions.findIndex(q => q.id === params.id);
   const nextId = currentIndex < questions.length - 1 ? questions[currentIndex + 1].id : questions[0].id;
   const prevId = currentIndex > 0 ? questions[currentIndex - 1].id : questions[questions.length - 1].id;
-
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      router.push(`/categories/${params.category}/questions/${nextId}`);
-      toast({
-        title: "Next Question",
-        description: "Swipe right to go back",
-      });
-    },
-    onSwipedRight: () => {
-      router.push(`/categories/${params.category}/questions/${prevId}`);
-      toast({
-        title: "Previous Question",
-        description: "Swipe left to continue",
-      });
-    },
-  });
 
   return (
     <PageTransition>
@@ -81,4 +84,4 @@ export default function CategoryQuestionPage() {
       </div>
     </PageTransition>
   );
-} 
+}
