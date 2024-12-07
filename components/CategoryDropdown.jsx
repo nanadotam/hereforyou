@@ -23,7 +23,7 @@ export default function CategoryDropdown() {
         onClick={openChangelog}
         className="font-playfair italic text-black hover:text-black/80 flex items-center gap-2"
       >
-        What's New
+        What&apos;s New
       </button>
 
       <Link

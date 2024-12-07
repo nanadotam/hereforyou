@@ -54,7 +54,7 @@ export default function ChangelogModal() {
       closeChangelog();
       localStorage.setItem('hasSeenChangelog', 'true');
     }
-  }, []);
+  }, [closeChangelog]);
 
   if (!mounted) return null;
 

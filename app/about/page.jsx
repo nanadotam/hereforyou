@@ -20,7 +20,7 @@ export default function AboutPage() {
             
             <div className="space-y-4 text-gray-600 text-center">
               <p>
-                Here for You was born from a simple yet profound desire: my girlfriend's wish to know me on a deeper level. 
+                Here for You was born from a simple yet profound desire: my girlfriend&apos;s wish to know me on a deeper level. 
                 This journey of creating meaningful conversations has evolved into a tool that helps couples, friends, 
                 families, and individuals foster deeper connections through thoughtful questions and shared moments.
               </p>
