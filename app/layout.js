@@ -18,6 +18,20 @@ const openSans = Open_Sans({
 export const metadata = {
   title: "Here for You",
   description: "A space for meaningful conversations",
+  openGraph: {
+    title: 'Here for You',
+    description: 'A space for meaningful conversations',
+    url: 'https://hereforyou-love.vercel.app/',
+    siteName: 'Here for You',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Here for You',
+    description: 'A space for meaningful conversations',
+    creator: 'github.com/nanadotam',
+  },
 };
 
 export default function RootLayout({ children }) {

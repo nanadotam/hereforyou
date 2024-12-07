@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import useChangelogStore from '@/app/store/useChangelogStore';
 
 const changelogData = [
   {
@@ -43,24 +44,19 @@ const usageExamples = [
 
 export default function ChangelogModal() {
   const [mounted, setMounted] = useState(false);
-  const [shouldShow, setShouldShow] = useState(false);
+  const { isOpen, closeChangelog } = useChangelogStore();
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     setMounted(true);
     const seen = localStorage.getItem('hasSeenChangelog');
-    setShouldShow(!seen);
+    if (!seen) {
+      closeChangelog();
+      localStorage.setItem('hasSeenChangelog', 'true');
+    }
   }, []);
 
-  const handleClose = () => {
-    setShouldShow(false);
-    localStorage.setItem('hasSeenChangelog', 'true');
-  };
-
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  if (!mounted) {
-    return null;
-  }
+  if (!mounted) return null;
 
   const slides = [
     {
@@ -104,7 +100,7 @@ export default function ChangelogModal() {
   ];
 
   return (
-    <Dialog open={shouldShow} onOpenChange={handleClose}>
+    <Dialog open={isOpen} onOpenChange={closeChangelog}>
       <DialogContent className="max-w-md mx-auto w-[95%] p-4 md:p-6">
         <DialogHeader>
           <DialogTitle className="text-2xl md:text-3xl text-center">
@@ -124,7 +120,7 @@ export default function ChangelogModal() {
 
         <div className="flex justify-between mt-6 gap-4">
           <button
-            onClick={handleClose}
+            onClick={closeChangelog}
             className="px-6 py-2 bg-gray-100 hover:bg-gray-200 rounded-full 
                      font-playfair italic text-gray-800 transition-colors text-sm md:text-base"
           >
@@ -133,7 +129,7 @@ export default function ChangelogModal() {
           <button
             onClick={() => {
               if (currentSlide === slides.length - 1) {
-                handleClose();
+                closeChangelog();
               } else {
                 setCurrentSlide(current => current + 1);
               }
