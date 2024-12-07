@@ -899,7 +899,7 @@ export const categoryQuestions = {
   self: {
     title: "Yourself",
     description: "Journey into self-discovery",
-    backgroundColor: "var(--warm-mauve)",
+    backgroundColor: "var(--purple)",
     questions: [
       {
         id: "s1",
@@ -1196,7 +1196,7 @@ export const categoryQuestions = {
   table: {
     title: "The Table",
     description: "Share moments with those present",
-    backgroundColor: "var(--purple)",
+    backgroundColor: "var(--deep-rose)",
     questions: [
       {
         id: "t1",
@@ -1504,7 +1504,7 @@ export const categoryQuestions = {
   bible: {
     title: "Intimacy with God",
     description: "Reflect on your spiritual journey",
-    backgroundColor: "var(--deep-rose)",
+    backgroundColor: "var(--warm-mauve)",
     questions: [
       {
         id: "g1",
