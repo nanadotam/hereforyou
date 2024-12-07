@@ -8,6 +8,12 @@ export const size = {
 };
 
 export default async function Image() {
+  const playfairDisplay = fetch(
+    new URL('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap')
+  ).then((res) => res.arrayBuffer());
+
+  const font = await playfairDisplay;
+
   return new ImageResponse(
     (
       <div
@@ -19,7 +25,6 @@ export default async function Image() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          fontFamily: 'Playfair Display',
           padding: '40px',
         }}
       >
@@ -37,6 +42,7 @@ export default async function Image() {
               color: 'white',
               textAlign: 'center',
               marginBottom: '20px',
+              fontFamily: '"Playfair Display"',
               fontStyle: 'italic',
             }}
           >
@@ -48,6 +54,7 @@ export default async function Image() {
               color: 'rgba(255, 255, 255, 0.9)',
               textAlign: 'center',
               maxWidth: '800px',
+              fontFamily: '"Playfair Display"',
               fontStyle: 'italic',
             }}
           >
@@ -58,6 +65,14 @@ export default async function Image() {
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: 'Playfair Display',
+          data: font,
+          weight: 400,
+          style: 'italic',
+        },
+      ],
     }
   );
 } 
