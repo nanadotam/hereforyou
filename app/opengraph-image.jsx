@@ -7,58 +7,8 @@ export const size = {
   height: 630,
 };
 
+export const contentType = 'image/png';
+
 export default function Image() {
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          background: 'linear-gradient(to bottom right, #9F7AEA, #805AD5)',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '40px',
-        }}
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '20px',
-          }}
-        >
-          <h1
-            style={{
-              fontSize: '72px',
-              color: 'white',
-              textAlign: 'center',
-              marginBottom: '20px',
-              fontFamily: 'Georgia, serif',
-              fontStyle: 'italic',
-            }}
-          >
-            Here for You
-          </h1>
-          <p
-            style={{
-              fontSize: '32px',
-              color: 'rgba(255, 255, 255, 0.9)',
-              textAlign: 'center',
-              maxWidth: '800px',
-              fontFamily: 'Georgia, serif',
-              fontStyle: 'italic',
-            }}
-          >
-            A space for meaningful conversations
-          </p>
-        </div>
-      </div>
-    ),
-    {
-      ...size,
-    }
-  );
+  return new URL('../../public/OG-image.png', import.meta.url);
 } 
