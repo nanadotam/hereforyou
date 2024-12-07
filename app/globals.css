@@ -7,6 +7,10 @@
   --pale-blue: #a7c7e7;
   --coral-red: #ff6f61;
   --purple: #9b5de5;
+  --deep-rose: #c06c84;      /* For vulnerability and emotional openness */
+  --sage-green: #7d9b76;     /* For growth and inner peace */
+  --warm-mauve: #967aa1;     /* For introspection and self-awareness */
+  --peach-puff: #ffdab9;
   --text-dark: #2c3e50;
   --text-light: #ffffff;
 }

@@ -13,6 +13,10 @@ module.exports = {
   			'pale-blue': 'var(--pale-blue)',
   			'coral-red': 'var(--coral-red)',
   			purple: 'var(--purple)',
+  			'deep-rose': 'var(--deep-rose)',
+  			'sage-green': 'var(--sage-green)',
+  			'warm-mauve': 'var(--warm-mauve)',
+  			'peach-puff': 'var(--peach-puff)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

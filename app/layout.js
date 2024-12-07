@@ -2,6 +2,7 @@ import { Playfair_Display, Open_Sans } from 'next/font/google';
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from '@/components/Navbar';
 import "./globals.css";
+import ChangelogModal from "@/components/ChangelogModal";
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Toaster />
+        <ChangelogModal />
       </body>
     </html>
   );

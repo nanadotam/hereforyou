@@ -2,6 +2,7 @@
 
 import { categoryQuestions } from '@/app/data/categoryQuestions';
 import PageTransition from '@/components/PageTransition';
+import InfoCard from '@/components/InfoCard';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -11,10 +12,7 @@ export default function CategoryPage() {
   const router = useRouter();
   const category = categoryQuestions[params.category];
   const [showCards, setShowCards] = useState(false);
-  const [currentQuestion, setCurrentQuestion] = useState(() => {
-    const randomIndex = Math.floor(Math.random() * category?.questions.length);
-    return category?.questions[randomIndex];
-  });
+  const [currentQuestion, setCurrentQuestion] = useState(null);
 
   if (!category) {
     router.push('/');
@@ -45,15 +43,15 @@ export default function CategoryPage() {
         className="min-h-screen w-full py-20 px-4 relative flex flex-col"
         style={{ backgroundColor: category.backgroundColor }}
       >
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="font-playfair italic text-4xl md:text-6xl text-white text-center mb-4"
-        >
-          {category.title}
-        </motion.h1>
-
-        {!showCards ? (
+        {!showCards && currentQuestion === null ? (
+          <InfoCard 
+            category={category} 
+            onStart={() => {
+              const randomIndex = Math.floor(Math.random() * category.questions.length);
+              setCurrentQuestion(category.questions[randomIndex]);
+            }} 
+          />
+        ) : !showCards ? (
           <div className="flex-1 flex flex-col items-center justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -118,16 +116,18 @@ export default function CategoryPage() {
           </div>
         )}
 
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          onClick={() => setShowCards(!showCards)}
-          className="fixed bottom-8 right-8 px-6 py-3 bg-white rounded-full 
+        {currentQuestion && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setShowCards(!showCards)}
+            className="fixed bottom-8 right-8 px-6 py-3 bg-white rounded-full 
                      font-playfair italic text-gray-800 transition-colors hover:bg-white/90
                      shadow-lg"
-        >
-          {showCards ? 'Show Current Question' : 'View All Questions'}
-        </motion.button>
+          >
+            {showCards ? 'Show Current Question' : 'View All Questions'}
+          </motion.button>
+        )}
       </div>
     </PageTransition>
   );
