@@ -8,71 +8,127 @@ export const size = {
 };
 
 export default async function Image() {
-  const playfairDisplay = fetch(
-    new URL('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap')
-  ).then((res) => res.arrayBuffer());
+  try {
+    const playfairDisplay = await fetch(
+      new URL('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap')
+    ).then((res) => res.arrayBuffer());
 
-  const font = await playfairDisplay;
-
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          background: 'linear-gradient(to bottom right, #9F7AEA, #805AD5)',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '40px',
-        }}
-      >
+    return new ImageResponse(
+      (
         <div
           style={{
+            background: 'linear-gradient(to bottom right, #9F7AEA, #805AD5)',
+            width: '100%',
+            height: '100%',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '20px',
+            justifyContent: 'center',
+            padding: '40px',
           }}
         >
-          <h1
+          <div
             style={{
-              fontSize: '72px',
-              color: 'white',
-              textAlign: 'center',
-              marginBottom: '20px',
-              fontFamily: '"Playfair Display"',
-              fontStyle: 'italic',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '20px',
             }}
           >
-            Here for You
-          </h1>
-          <p
-            style={{
-              fontSize: '32px',
-              color: 'rgba(255, 255, 255, 0.9)',
-              textAlign: 'center',
-              maxWidth: '800px',
-              fontFamily: '"Playfair Display"',
-              fontStyle: 'italic',
-            }}
-          >
-            A space for meaningful conversations
-          </p>
+            <h1
+              style={{
+                fontSize: '72px',
+                color: 'white',
+                textAlign: 'center',
+                marginBottom: '20px',
+                fontFamily: '"Playfair Display"',
+                fontStyle: 'italic',
+              }}
+            >
+              Here for You
+            </h1>
+            <p
+              style={{
+                fontSize: '32px',
+                color: 'rgba(255, 255, 255, 0.9)',
+                textAlign: 'center',
+                maxWidth: '800px',
+                fontFamily: '"Playfair Display"',
+                fontStyle: 'italic',
+              }}
+            >
+              A space for meaningful conversations
+            </p>
+          </div>
         </div>
-      </div>
-    ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: 'Playfair Display',
-          data: font,
-          weight: 400,
-          style: 'italic',
-        },
-      ],
-    }
-  );
+      ),
+      {
+        ...size,
+        fonts: [
+          {
+            name: 'Playfair Display',
+            data: playfairDisplay,
+            weight: 400,
+            style: 'italic',
+          },
+        ],
+      }
+    );
+  } catch (error) {
+    console.error('Error loading Playfair Display font:', error);
+    return new ImageResponse(
+      (
+        <div
+          style={{
+            background: 'linear-gradient(to bottom right, #9F7AEA, #805AD5)',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '40px',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '20px',
+            }}
+          >
+            <h1
+              style={{
+                fontSize: '72px',
+                color: 'white',
+                textAlign: 'center',
+                marginBottom: '20px',
+                fontFamily: '"Playfair Display"',
+                fontStyle: 'italic',
+              }}
+            >
+              Here for You
+            </h1>
+            <p
+              style={{
+                fontSize: '32px',
+                color: 'rgba(255, 255, 255, 0.9)',
+                textAlign: 'center',
+                maxWidth: '800px',
+                fontFamily: '"Playfair Display"',
+                fontStyle: 'italic',
+              }}
+            >
+              A space for meaningful conversations
+            </p>
+          </div>
+        </div>
+      ),
+      {
+        ...size,
+        fonts: [],
+      }
+    );
+  }
 } 
