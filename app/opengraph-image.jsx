@@ -1,5 +1,8 @@
 import { ImageResponse } from 'next/og';
 
+// Import the static image
+import OGImage from '../public/OG-image.png';
+
 export const runtime = 'edge';
 export const alt = 'Here for You - A space for meaningful conversations';
 export const size = {
@@ -10,5 +13,5 @@ export const size = {
 export const contentType = 'image/png';
 
 export default function Image() {
-  return new URL('../../public/OG-image.png', import.meta.url);
+  return OGImage;
 } 

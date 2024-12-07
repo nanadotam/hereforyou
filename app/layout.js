@@ -23,14 +23,19 @@ export const metadata = {
     description: 'A space for meaningful conversations',
     url: 'https://hereforyou-love.vercel.app/',
     siteName: 'Here for You',
-    locale: 'en_US',
-    type: 'website',
+    images: [{
+      url: '/OG-image.png',
+      width: 1200,
+      height: 630,
+      alt: 'Here for You - A space for meaningful conversations',
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Here for You',
     description: 'A space for meaningful conversations',
-    creator: 'github.com/nanadotam',
+    creator: '@nanadotam',
+    images: ['/OG-image.png'],
   },
 };
 
