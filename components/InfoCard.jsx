@@ -70,7 +70,7 @@ const InfoCard = ({ category, onStart }) => {
         </p>
 
         <div className="bg-gray-50 rounded-lg p-4">
-          <p className="text-sm text-gray-600 italic">
+          <p className="text-sm text-gray-600 italic text-center">
             {colorDescriptions[category.backgroundColor]}
           </p>
         </div>

@@ -13,7 +13,7 @@ import useChangelogStore from '@/app/store/useChangelogStore';
 
 const changelogData = [
   {
-    version: "1.2.0",
+    version: "1.3.0",
     date: "December 2024",
     changes: [
       "Added 'Intimacy with God' - a new category designed for spiritual reflection and deepening your faith journey",
